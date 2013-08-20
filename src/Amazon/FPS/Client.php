@@ -868,7 +868,7 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
     private function _httpPost(array $parameters)
     {
         $fpsServiceEndPoint = $this->_config["ServiceURL"];
-        $query = http_build_query($parameters);
+        $query = http_build_query($parameters, '', '&');
 
         //initialize CURL
         $curlHandle = curl_init();
