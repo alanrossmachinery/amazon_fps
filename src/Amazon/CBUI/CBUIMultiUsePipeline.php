@@ -55,10 +55,10 @@ class Amazon_FPS_CBUIMultiUsePipeline extends Amazon_FPS_CBUIPipeline {
      * Set usage limits for multi use token pipeline.
      */
     public function setUsageLimit2($limitType, $limitValue, $limitPeriod) {
-        $this->addParameter("usageLimitType1", $limitType);
-        $this->addParameter("usageLimitValue1", $limitValue);
+        $this->addParameter("usageLimitType2", $limitType);
+        $this->addParameter("usageLimitValue2", $limitValue);
         if (isset($limitPeriod)) {
-            $this->addParameter("usageLimitPeriod1", $limitPeriod);
+            $this->addParameter("usageLimitPeriod2", $limitPeriod);
         }
     }
 
