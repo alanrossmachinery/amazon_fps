@@ -95,6 +95,32 @@ abstract class Amazon_FPS_CBUIPipeline {
     }
 
     /**
+     * Retrieve a parameter
+     *
+     * @param string $name
+     *   The name of the parameter to retrieve
+     * @param mixed $default
+     *   If the parameter $name is not set, return this value instead
+     * @return mixed
+     */
+    public function getParameter($name, $default = null) {
+        if(isset($this->parameters[$name])) {
+            return $this->parameters[$name];
+        }
+
+        return $default;
+    }
+    
+    /**
+     * Retrieve all set parameters
+     *
+     * @return array
+     */
+    public function getParameters() {
+        return $this->parameters;
+    }
+
+    /**
      * Computes RFC 2104-compliant HMAC signature for request parameters
      * Implements AWS Signature, as per following spec:
      *
