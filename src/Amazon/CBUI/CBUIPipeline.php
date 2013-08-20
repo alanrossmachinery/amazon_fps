@@ -90,20 +90,26 @@ abstract class Amazon_FPS_CBUIPipeline {
      *
      * @param string $key    Key of the key-value pair in querystring
      * @param string $value  Value of the key-value pair in querystring
+     * @return Amazon_FPS_CBUIPipeline
      */
     public function addParameter($key, $value) {
         $this->parameters[$key] = $value;
+        
+        return $this;
     }
 
     /**
      * Adds all the parameters to existing parameters.
      *
      * @param string $params    Optional parameters.
+     * @return Amazon_FPS_CBUIPipeline
      */
     public function addOptionalParameters($params) {
         foreach ($params as $key => $value) {
             $this->parameters[$key] = $value;
         }
+        
+        return $this;
     }
 
     /**
