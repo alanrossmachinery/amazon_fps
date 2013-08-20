@@ -1,5 +1,5 @@
 <?php
-/** 
+/**
  *  PHP Version 5
  *
  *  @category    Amazon
@@ -9,14 +9,14 @@
  *  @license     http://aws.amazon.com/apache2.0  Apache License, Version 2.0
  *  @version     2010-08-28
  */
-/******************************************************************************* 
- *    __  _    _  ___ 
+/*******************************************************************************
+ *    __  _    _  ___
  *   (  )( \/\/ )/ __)
  *   /__\ \    / \__ \
  *  (_)(_) \/\/  (___/
- * 
+ *
  *  Amazon FPS PHP5 Library
- * 
+ *
  */
 
 require_once('CBUIPipeline.php');
@@ -27,8 +27,8 @@ class Amazon_FPS_CBUISingleUsePipeline extends Amazon_FPS_CBUIPipeline {
      * @param string $accessKeyId    Amazon Web Services Access Key ID.
      * @param string $secretAccessKey   Amazon Web Services Secret Access Key.
      */
-    function Amazon_FPS_CBUISingleUsePipeline($awsAccessKey, $awsSecretKey) {
-        parent::Amazon_FPS_CBUIPipeline("SingleUse", $awsAccessKey, $awsSecretKey);
+    function __construct($awsAccessKey, $awsSecretKey) {
+        parent::__construct("SingleUse", $awsAccessKey, $awsSecretKey);
     }
 
     /**

@@ -27,8 +27,8 @@ class Amazon_FPS_CBUIMultiUsePipeline extends Amazon_FPS_CBUIPipeline {
      * @param string $accessKeyId    Amazon Web Services Access Key ID.
      * @param string $secretAccessKey   Amazon Web Services Secret Access Key.
      */
-    function Amazon_FPS_CBUIMultiUsePipeline($awsAccessKey, $awsSecretKey) {
-        parent::Amazon_FPS_CBUIPipeline("MultiUse", $awsAccessKey, $awsSecretKey);
+    function __construct($awsAccessKey, $awsSecretKey) {
+        parent::__construct("MultiUse", $awsAccessKey, $awsSecretKey);
     }
 
     /**

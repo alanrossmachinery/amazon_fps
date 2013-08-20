@@ -27,8 +27,8 @@ class Amazon_FPS_CBUIRecipientTokenPipeline extends Amazon_FPS_CBUIPipeline {
      * @param string $accessKeyId    Amazon Web Services Access Key ID.
      * @param string $secretAccessKey   Amazon Web Services Secret Access Key.
      */
-    function Amazon_FPS_CBUIRecipientTokenPipeline($awsAccessKey, $awsSecretKey) {
-        parent::Amazon_FPS_CBUIPipeline("Recipient", $awsAccessKey, $awsSecretKey);
+    function __construct($awsAccessKey, $awsSecretKey) {
+        parent::__construct("Recipient", $awsAccessKey, $awsSecretKey);
     }
 
     /**

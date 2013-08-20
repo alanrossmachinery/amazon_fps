@@ -61,7 +61,7 @@ abstract class Amazon_FPS_CBUIPipeline {
      * @param string $accessKeyId    Amazon Web Services Access Key ID.
      * @param string $secretAccessKey   Amazon Web Services Secret Access Key.
      */
-    function Amazon_FPS_CBUIPipeline($pipelineName, $awsAccessKey, $awsSecretKey) {
+    function __construct($pipelineName, $awsAccessKey, $awsSecretKey) {
         $this->awsSecretKey = $awsSecretKey;
         $this->awsAccessKey = $awsAccessKey;
         
