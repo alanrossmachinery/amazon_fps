@@ -1,0 +1,37 @@
+# Exclude IDE management files.
+
+# Eclipse
+.project
+.cache
+.settings
+.buildpath
+
+# Netbeans
+netbeans
+nbproject
+
+# Komodo
+*.kpf
+
+# Exclude hidden OS files.
+.DS_Store
+._*
+Thumbs.db
+
+# Exclude other VCS tracking files.
+CVS
+.#*
+.svn
+.bzr
+
+# Exclude Sass temp files.
+.sass-cache
+
+# Exclude files used by FTP, Dreamweaver, Frontpage, vi, etc.
+WS_FTP.LOG
+_notes
+_vti_*
+*.LCK
+*.TMP
+*~
+*.bbprojectd
