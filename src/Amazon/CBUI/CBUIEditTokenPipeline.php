@@ -27,20 +27,20 @@ class Amazon_FPS_CBUIEditTokenPipeline extends Amazon_FPS_CBUIPipeline {
      * @param string $accessKeyId    Amazon Web Services Access Key ID.
      * @param string $secretAccessKey   Amazon Web Services Secret Access Key.
      */
-    function __construct($awsAccessKey, $awsSecretKey) {
+    public function __construct($awsAccessKey, $awsSecretKey) {
         parent::__construct("EditToken", $awsAccessKey, $awsSecretKey);
     }
 
     /**
      * Set mandatory parameters required for edit token pipeline.
      */
-    function setMandatoryParameters($callerReference, $returnUrl, $tokenId) {
+    public function setMandatoryParameters($callerReference, $returnUrl, $tokenId) {
         $this->addParameter("callerReference", $callerReference);
         $this->addParameter("returnURL", $returnUrl);
         $this->addParameter("tokenId", $tokenId);
     }
 
-    function validateParameters($parameters) {
+    protected function validateParameters($parameters) {
         //mandatory parameters for single use pipeline
         if (!isset($parameters["tokenId"])) {
             throw new Exception("tokenId is missing in parameters.");

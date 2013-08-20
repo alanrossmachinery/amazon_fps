@@ -27,20 +27,20 @@ class Amazon_FPS_CBUISingleUsePipeline extends Amazon_FPS_CBUIPipeline {
      * @param string $accessKeyId    Amazon Web Services Access Key ID.
      * @param string $secretAccessKey   Amazon Web Services Secret Access Key.
      */
-    function __construct($awsAccessKey, $awsSecretKey) {
+    public function __construct($awsAccessKey, $awsSecretKey) {
         parent::__construct("SingleUse", $awsAccessKey, $awsSecretKey);
     }
 
     /**
      * Set mandatory parameters required for single use token pipeline.
      */
-    function setMandatoryParameters($callerReference, $returnUrl, $transactionAmount) {
+    public function setMandatoryParameters($callerReference, $returnUrl, $transactionAmount) {
         $this->addParameter("callerReference", $callerReference);
         $this->addParameter("returnURL", $returnUrl);
         $this->addParameter("transactionAmount", $transactionAmount);
     }
 
-    function validateParameters($parameters) {
+    protected function validateParameters($parameters) {
         //mandatory parameters for single use pipeline
         if (!isset($parameters["transactionAmount"])) {
             throw new Exception("transactionAmount is missing in parameters.");

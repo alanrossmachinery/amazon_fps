@@ -27,14 +27,14 @@ class Amazon_FPS_CBUIRecipientTokenPipeline extends Amazon_FPS_CBUIPipeline {
      * @param string $accessKeyId    Amazon Web Services Access Key ID.
      * @param string $secretAccessKey   Amazon Web Services Secret Access Key.
      */
-    function __construct($awsAccessKey, $awsSecretKey) {
+    public function __construct($awsAccessKey, $awsSecretKey) {
         parent::__construct("Recipient", $awsAccessKey, $awsSecretKey);
     }
 
     /**
      * Set mandatory parameters required for recipient token pipeline.
      */
-    function setMandatoryParameters($callerReference, $returnUrl,
+    public function setMandatoryParameters($callerReference, $returnUrl,
             $maxFixedFee, $maxVariableFee, $recipientPaysFee) {
         $this->addParameter("callerReference", $callerReference);
         $this->addParameter("returnURL", $returnUrl);
@@ -43,7 +43,7 @@ class Amazon_FPS_CBUIRecipientTokenPipeline extends Amazon_FPS_CBUIPipeline {
         $this->addParameter("recipientPaysFee", $recipientPaysFee);
     }
 
-    function validateParameters($parameters) {
+    protected function validateParameters($parameters) {
         //mandatory parameters for recipient token pipeline
         if (!isset($parameters["maxFixedFee"])) {
             throw new Exception("maxFixedFee is missing in parameters.");

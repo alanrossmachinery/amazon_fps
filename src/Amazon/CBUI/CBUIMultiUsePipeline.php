@@ -27,14 +27,14 @@ class Amazon_FPS_CBUIMultiUsePipeline extends Amazon_FPS_CBUIPipeline {
      * @param string $accessKeyId    Amazon Web Services Access Key ID.
      * @param string $secretAccessKey   Amazon Web Services Secret Access Key.
      */
-    function __construct($awsAccessKey, $awsSecretKey) {
+    public function __construct($awsAccessKey, $awsSecretKey) {
         parent::__construct("MultiUse", $awsAccessKey, $awsSecretKey);
     }
 
     /**
      * Set mandatory parameters required for multi use token pipeline.
      */
-    function setMandatoryParameters($callerReference, $returnUrl, $globalAmountLimit) {
+    public function setMandatoryParameters($callerReference, $returnUrl, $globalAmountLimit) {
         $this->addParameter("callerReference", $callerReference);
         $this->addParameter("returnURL", $returnUrl);
         $this->addParameter("globalAmountLimit", $globalAmountLimit);
@@ -43,7 +43,7 @@ class Amazon_FPS_CBUIMultiUsePipeline extends Amazon_FPS_CBUIPipeline {
     /**
      * Set usage limits for multi use token pipeline.
      */
-    function setUsageLimit1($limitType, $limitValue, $limitPeriod) {
+    public function setUsageLimit1($limitType, $limitValue, $limitPeriod) {
         $this->addParameter("usageLimitType1", $limitType);
         $this->addParameter("usageLimitValue1", $limitValue);
         if (isset($limitPeriod)) {
@@ -54,7 +54,7 @@ class Amazon_FPS_CBUIMultiUsePipeline extends Amazon_FPS_CBUIPipeline {
     /**
      * Set usage limits for multi use token pipeline.
      */
-    function setUsageLimit2($limitType, $limitValue, $limitPeriod) {
+    public function setUsageLimit2($limitType, $limitValue, $limitPeriod) {
         $this->addParameter("usageLimitType1", $limitType);
         $this->addParameter("usageLimitValue1", $limitValue);
         if (isset($limitPeriod)) {
@@ -65,7 +65,7 @@ class Amazon_FPS_CBUIMultiUsePipeline extends Amazon_FPS_CBUIPipeline {
     /**
      * Set recipient token list for multi use token pipeline.
      */
-    function setRecipientTokenList($isRecipientCobranding, $tokens) {
+    public function setRecipientTokenList($isRecipientCobranding, $tokens) {
         $this->addParameter("isRecipientCobranding", ($isRecipientCobranding ? "True" : "False"));
         if (!isset($tokens)) {
             return;
@@ -74,7 +74,7 @@ class Amazon_FPS_CBUIMultiUsePipeline extends Amazon_FPS_CBUIPipeline {
         $this->addParameter("recipientTokenList", $tokenList);
     }
 
-    function validateParameters($parameters) {
+    protected function validateParameters($parameters) {
         //mandatory parameters for multi use pipeline
         if (!isset($parameters["globalAmountLimit"])) {
             throw new Exception("globalAmountLimit is missing in parameters.");
