@@ -74,6 +74,18 @@ abstract class Amazon_FPS_CBUIPipeline {
     }
 
     /**
+     * Set the base CBUI URL
+     *
+     * @param string $url
+     * @return Amazon_FPS_CBUIPipeline
+     */
+    public function setCBUIURL($url) {
+        self::$CBUI_URL = $url;
+
+        return $this;
+    }
+
+    /**
      * Adds any custom name value pair to the query string
      *
      * @param string $key    Key of the key-value pair in querystring
