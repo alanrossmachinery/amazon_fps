@@ -76,7 +76,7 @@ class Amazon_FPS_Model_GetRecipientVerificationStatusResponse extends Amazon_FPS
         $dom = new DOMDocument();
         $dom->loadXML($xml);
         $xpath = new DOMXPath($dom);
-    	$xpath->registerNamespace('a', 'http://fps.amazonaws.com/doc/2010-08-28/');
+        $xpath->registerNamespace('a', 'http://fps.amazonaws.com/doc/2010-08-28/');
         $response = $xpath->query('//a:GetRecipientVerificationStatusResponse');
         if ($response->length == 1) {
             return new Amazon_FPS_Model_GetRecipientVerificationStatusResponse(($response->item(0))); 

@@ -35,7 +35,7 @@ class Amazon_FPS_CBUIRecurringTokenPipeline extends Amazon_FPS_CBUIPipeline {
      * Set mandatory parameters required for recurring token pipeline.
      */
     function setMandatoryParameters($callerReference, $returnUrl, 
-    		$transactionAmount, $recurringPeriod) {
+            $transactionAmount, $recurringPeriod) {
         $this->addParameter("callerReference", $callerReference);
         $this->addParameter("returnURL", $returnUrl);
         $this->addParameter("transactionAmount", $transactionAmount);
