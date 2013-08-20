@@ -1,5 +1,5 @@
 <?php
-/** 
+/**
  *  PHP Version 5
  *
  *  @category    Amazon
@@ -9,14 +9,14 @@
  *  @license     http://aws.amazon.com/apache2.0  Apache License, Version 2.0
  *  @version     2010-08-28
  */
-/******************************************************************************* 
- *    __  _    _  ___ 
+/*******************************************************************************
+ *    __  _    _  ___
  *   (  )( \/\/ )/ __)
  *   /__\ \    / \__ \
  *  (_)(_) \/\/  (___/
- * 
+ *
  *  Amazon FPS PHP5 Library
- * 
+ *
  */
 
 /**
@@ -25,9 +25,9 @@
 require_once ('Amazon/FPS/Interface.php');
 
 /**
- * 
+ *
  * Amazon Flexible Payments Service
- * 
+ *
  * Amazon_FPS_Client is an implementation of Amazon_FPS
  *
  */
@@ -42,7 +42,7 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
     /** @var string */
     private  $_awsSecretAccessKey = null;
-	    
+        
     /** @var array */
     private  $_config = array ('ServiceURL' => 'https://fps.amazonaws.com',
                                'UserAgent' => self::USER_AGENT_IDENTIFIER,
@@ -86,10 +86,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Cancel Token 
-     * 
+     * Cancel Token
+     *
      * Cancels any token installed by the calling application on its own account.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}CancelToken.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_CancelTokenRequest request
      * or Amazon_FPS_Model_CancelTokenRequest object itself
@@ -111,10 +111,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Cancel 
-     * 
+     * Cancel
+     *
      * Cancels an ongoing transaction and puts it in cancelled state.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}Cancel.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_CancelRequest request
      * or Amazon_FPS_Model_CancelRequest object itself
@@ -136,10 +136,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Fund Prepaid 
-     * 
+     * Fund Prepaid
+     *
      * Funds the prepaid balance on the given prepaid instrument.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}FundPrepaid.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_FundPrepaidRequest request
      * or Amazon_FPS_Model_FundPrepaidRequest object itself
@@ -161,10 +161,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Account Activity 
-     * 
+     * Get Account Activity
+     *
      * Returns transactions for a given date range.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetAccountActivity.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetAccountActivityRequest request
      * or Amazon_FPS_Model_GetAccountActivityRequest object itself
@@ -186,10 +186,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Account Balance 
-     * 
+     * Get Account Balance
+     *
      * Returns the account balance for an account in real time.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetAccountBalance.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetAccountBalanceRequest request
      * or Amazon_FPS_Model_GetAccountBalanceRequest object itself
@@ -211,9 +211,9 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Transactions For Subscription 
+     * Get Transactions For Subscription
      * Returns the transactions for a given subscriptionID.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetTransactionsForSubscription.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetTransactionsForSubscriptionRequest request
      * or Amazon_FPS_Model_GetTransactionsForSubscriptionRequest object itself
@@ -235,9 +235,9 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Subscription Details 
+     * Get Subscription Details
      * Returns the details of Subscription for a given subscriptionID.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetSubscriptionDetails.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetSubscriptionDetailsRequest request
      * or Amazon_FPS_Model_GetSubscriptionDetailsRequest object itself
@@ -259,10 +259,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Debt Balance 
-     * 
+     * Get Debt Balance
+     *
      * Returns the balance corresponding to the given credit instrument.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetDebtBalance.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetDebtBalanceRequest request
      * or Amazon_FPS_Model_GetDebtBalanceRequest object itself
@@ -284,10 +284,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Outstanding Debt Balance 
-     * 
+     * Get Outstanding Debt Balance
+     *
      * Returns the total outstanding balance for all the credit instruments for the given creditor account.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetOutstandingDebtBalance.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetOutstandingDebtBalanceRequest request
      * or Amazon_FPS_Model_GetOutstandingDebtBalanceRequest object itself
@@ -309,10 +309,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Prepaid Balance 
-     * 
+     * Get Prepaid Balance
+     *
      * Returns the balance available on the given prepaid instrument.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetPrepaidBalance.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetPrepaidBalanceRequest request
      * or Amazon_FPS_Model_GetPrepaidBalanceRequest object itself
@@ -334,10 +334,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Token By Caller 
-     * 
+     * Get Token By Caller
+     *
      * Returns the details of a particular token installed by this calling application using the subway co-branded UI.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetTokenByCaller.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetTokenByCallerRequest request
      * or Amazon_FPS_Model_GetTokenByCallerRequest object itself
@@ -359,10 +359,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Cancel Subscription And Refund 
-     * 
+     * Cancel Subscription And Refund
+     *
      * Cancels a subscription.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}CancelSubscriptionAndRefund.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_CancelSubscriptionAndRefundRequest request
      * or Amazon_FPS_Model_CancelSubscriptionAndRefundRequest object itself
@@ -384,10 +384,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Token Usage 
-     * 
+     * Get Token Usage
+     *
      * Returns the usage of a token.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetTokenUsage.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetTokenUsageRequest request
      * or Amazon_FPS_Model_GetTokenUsageRequest object itself
@@ -409,10 +409,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Tokens 
-     * 
+     * Get Tokens
+     *
      * Returns a list of tokens installed on the given account.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetTokens.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetTokensRequest request
      * or Amazon_FPS_Model_GetTokensRequest object itself
@@ -434,10 +434,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Total Prepaid Liability 
-     * 
+     * Get Total Prepaid Liability
+     *
      * Returns the total liability held by the given account corresponding to all the prepaid instruments owned by the account.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetTotalPrepaidLiability.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetTotalPrepaidLiabilityRequest request
      * or Amazon_FPS_Model_GetTotalPrepaidLiabilityRequest object itself
@@ -459,10 +459,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Transaction 
-     * 
+     * Get Transaction
+     *
      * Returns all details of a transaction.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetTransaction.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetTransactionRequest request
      * or Amazon_FPS_Model_GetTransactionRequest object itself
@@ -484,10 +484,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Transaction Status 
-     * 
+     * Get Transaction Status
+     *
      * Gets the latest status of a transaction.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetTransactionStatus.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetTransactionStatusRequest request
      * or Amazon_FPS_Model_GetTransactionStatusRequest object itself
@@ -509,10 +509,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Payment Instruction 
-     * 
+     * Get Payment Instruction
+     *
      * Gets the payment instruction of a token.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetPaymentInstruction.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetPaymentInstructionRequest request
      * or Amazon_FPS_Model_GetPaymentInstructionRequest object itself
@@ -534,9 +534,9 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Install Payment Instruction 
+     * Install Payment Instruction
      * Installs a payment instruction for caller.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}InstallPaymentInstruction.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_InstallPaymentInstructionRequest request
      * or Amazon_FPS_Model_InstallPaymentInstructionRequest object itself
@@ -558,10 +558,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Pay 
-     * 
+     * Pay
+     *
      * Allows calling applications to move money from a sender to a recipient.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}Pay.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_PayRequest request
      * or Amazon_FPS_Model_PayRequest object itself
@@ -583,10 +583,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Refund 
-     * 
+     * Refund
+     *
      * Refunds a previously completed transaction.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}Refund.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_RefundRequest request
      * or Amazon_FPS_Model_RefundRequest object itself
@@ -608,10 +608,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Reserve 
-     * 
-     * Reserve API is part of the Reserve and Settle API conjunction that serve the purpose of a pay where the authorization and settlement have a timing 				difference.
-     * 
+     * Reserve
+     *
+     * Reserve API is part of the Reserve and Settle API conjunction that serve the purpose of a pay where the authorization and settlement have a timing                 difference.
+     *
      * @see http://docs.amazonwebservices.com/${docPath}Reserve.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_ReserveRequest request
      * or Amazon_FPS_Model_ReserveRequest object itself
@@ -633,10 +633,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Settle 
-     * 
+     * Settle
+     *
      * The Settle API is used in conjunction with the Reserve API and is used to settle previously reserved transaction.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}Settle.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_SettleRequest request
      * or Amazon_FPS_Model_SettleRequest object itself
@@ -658,10 +658,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Settle Debt 
-     * 
-     * Allows a caller to initiate a transaction that atomically transfers money from a sender’s payment instrument to the recipient, while decreasing corresponding 				debt balance.
-     * 
+     * Settle Debt
+     *
+     * Allows a caller to initiate a transaction that atomically transfers money from a sender’s payment instrument to the recipient, while decreasing corresponding                 debt balance.
+     *
      * @see http://docs.amazonwebservices.com/${docPath}SettleDebt.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_SettleDebtRequest request
      * or Amazon_FPS_Model_SettleDebtRequest object itself
@@ -683,10 +683,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Write Off Debt 
-     * 
+     * Write Off Debt
+     *
      * Allows a creditor to write off the debt balance accumulated partially or fully at any time.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}WriteOffDebt.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_WriteOffDebtRequest request
      * or Amazon_FPS_Model_WriteOffDebtRequest object itself
@@ -708,10 +708,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Get Recipient Verification Status 
-     * 
+     * Get Recipient Verification Status
+     *
      * Returns the recipient status.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}GetRecipientVerificationStatus.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_GetRecipientVerificationStatusRequest request
      * or Amazon_FPS_Model_GetRecipientVerificationStatusRequest object itself
@@ -733,10 +733,10 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             
     /**
-     * Verify Signature 
-     * 
+     * Verify Signature
+     *
      * Verify the signature that FPS sent in IPN or callback urls.
-     * 
+     *
      * @see http://docs.amazonwebservices.com/${docPath}VerifySignature.html
      * @param mixed $request array of parameters for Amazon_FPS_Model_VerifySignatureRequest request
      * or Amazon_FPS_Model_VerifySignatureRequest object itself
@@ -887,11 +887,24 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
         curl_setopt($curlHandle, CURLOPT_HEADER, true);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curlHandle, CURLOPT_NOSIGNAL, true);
-	curl_setopt($curlHandle, CURLOPT_USERAGENT, self::USER_AGENT_IDENTIFIER);	
+        curl_setopt($curlHandle, CURLOPT_USERAGENT, self::USER_AGENT_IDENTIFIER);
 
 
         // Execute the request
         $response = curl_exec($curlHandle);
+
+        // Trim the response down to the final header and body
+        // This makes sure we aren't fooled by 100 Continue responses
+        // Adapted from Zend Framework 1's Curl HTTP client adapter
+        do {
+            $parts  = preg_split('|(?:\r?\n){2}|m', $response, 2);
+            $again  = false;
+
+            if (isset($parts[1]) && preg_match("|^HTTP/1\.[01](.*?)\r\n|mi", $parts[1])) {
+              $response = $parts[1];
+              $again = true;
+            }
+        } while ($again);
 
         // to grab the response code only from the Header
         list($other, $responseBody) = explode("\r\n\r\n", $response, 2);
@@ -995,9 +1008,9 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
         $data .= "\n";
         $uri = array_key_exists('path', $endpoint) ? $endpoint['path'] : null;
         if (!isset ($uri)) {
-        	$uri = "/";
+            $uri = "/";
         }
-		$uriencoded = implode("/", array_map(array($this, "_urlencode"), explode("/", $uri)));
+        $uriencoded = implode("/", array_map(array($this, "_urlencode"), explode("/", $uri)));
         $data .= $uriencoded;
         $data .= "\n";
         uksort($parameters, 'strcmp');
@@ -1006,7 +1019,7 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
     }
 
     private function _urlencode($value) {
-		return str_replace('%7E', '~', rawurlencode($value));
+        return str_replace('%7E', '~', rawurlencode($value));
     }
 
 
