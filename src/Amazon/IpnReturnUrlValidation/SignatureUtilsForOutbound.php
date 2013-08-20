@@ -112,8 +112,7 @@ class Amazon_FPS_SignatureUtilsForOutbound {
         curl_setopt($curlHandle, CURLOPT_FRESH_CONNECT, true);
         curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, '2');
-        curl_setopt($curlHandle, CURLOPT_CAINFO, '../../ca-bundle.crt');
-        curl_setopt($curlHandle, CURLOPT_CAPATH, '../../ca-bundle.crt');
+        curl_setopt($curlHandle, CURLOPT_CAINFO, dirname(dirname(__FILE__)) . '/ca-bundle.crt');
         curl_setopt($curlHandle, CURLOPT_FOLLOWLOCATION, false);
         curl_setopt($curlHandle, CURLOPT_MAXREDIRS, 0);
         curl_setopt($curlHandle, CURLOPT_HEADER, true);
@@ -128,6 +127,19 @@ class Amazon_FPS_SignatureUtilsForOutbound {
 
         // Execute the request
         $response = curl_exec($curlHandle);
+
+        // Trim the response down to the final header and body
+        // This makes sure we aren't fooled by 100 Continue responses
+        // Adapted from Zend Framework 1's Curl HTTP client adapter
+        do {
+            $parts  = preg_split('|(?:\r?\n){2}|m', $response, 2);
+            $again  = false;
+
+            if (isset($parts[1]) && preg_match("|^HTTP/1\.[01](.*?)\r\n|mi", $parts[1])) {
+                $response = $parts[1];
+                $again = true;
+            }
+        } while ($again);
 
         // Grab only the body
         $headerSize = curl_getinfo($curlHandle, CURLINFO_HEADER_SIZE);
