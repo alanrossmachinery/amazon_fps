@@ -98,7 +98,7 @@ class Amazon_FPS_SignatureUtilsForOutbound {
         }
         $verified = $this->verifySignature($parameters, $urlEndPoint);
         if (!$verified){
-        throw new Amazon_FPS_SignatureException('Certificate could not be verified by the FPS service');
+            throw new Amazon_FPS_SignatureException('Certificate could not be verified by the FPS service');
         }
 
        return $verified;

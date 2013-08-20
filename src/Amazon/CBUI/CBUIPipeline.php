@@ -1,5 +1,5 @@
 <?php
-/** 
+/**
  *  PHP Version 5
  *
  *  @category    Amazon
@@ -9,18 +9,18 @@
  *  @license     http://aws.amazon.com/apache2.0  Apache License, Version 2.0
  *  @version     2010-08-28
  */
-/******************************************************************************* 
- *    __  _    _  ___ 
+/*******************************************************************************
+ *    __  _    _  ___
  *   (  )( \/\/ )/ __)
  *   /__\ \    / \__ \
  *  (_)(_) \/\/  (___/
- * 
+ *
  *  Amazon FPS PHP5 Library
- * 
+ *
  */
 
 /**
- * Base class for CBUI pipelines. 
+ * Base class for CBUI pipelines.
  */
 abstract class Amazon_FPS_CBUIPipeline {
 
@@ -34,7 +34,7 @@ abstract class Amazon_FPS_CBUIPipeline {
 
     /**
      * The default URL corresponds to production environment. Change the URL for sandbox environment.
-     */ 
+     */
     protected static $CBUI_URL = "https://authorize.payments.amazon.com/cobranded-ui/actions/start";
 
     /**
@@ -84,7 +84,7 @@ abstract class Amazon_FPS_CBUIPipeline {
     }
 
     /**
-     * Adds all the parameters to existing parameters. 
+     * Adds all the parameters to existing parameters.
      *
      * @param string $params    Optional parameters.
      */
@@ -121,7 +121,7 @@ abstract class Amazon_FPS_CBUIPipeline {
             $algorithm = $parameters[self::SIGNATURE_METHOD_KEYNAME];
             $stringToSign = self::_calculateStringToSignV2($parameters, $httpMethod, $host, $requestURI);
         } else {
-        throw new Exception("Invalid Signature Version Specified.");
+            throw new Exception("Invalid Signature Version Specified.");
         }
         return self::_sign($stringToSign, $this->awsSecretKey, $algorithm);
     }
@@ -140,7 +140,7 @@ abstract class Amazon_FPS_CBUIPipeline {
         
         if ($hostHeader == null) {
             $hostHeader = "";
-        } 
+        }
         $data .= $hostHeader;
         $data .= "\n";
         
@@ -188,10 +188,10 @@ abstract class Amazon_FPS_CBUIPipeline {
     }
 
     /**
-     * Construct the pipeline request url using given parameters. 
+     * Construct the pipeline request url using given parameters.
      * Computes signature and adds it as additional parameter.
      * @param parameters - Map of pipeline request parameters.
-     * @return Returns the pipeline request url. 
+     * @return Returns the pipeline request url.
      * @throws MalformedURLException
      * @throws SignatureException
      * @throws UnsupportedEncodingException
@@ -213,7 +213,7 @@ abstract class Amazon_FPS_CBUIPipeline {
         return self::$CBUI_URL . "?" . $queryString;
     }
     
-    private function  getHostHeader($endPoint) {
+    private function getHostHeader($endPoint) {
         $url = parse_url($endPoint);
         $host = $url['host'];
         $scheme = strtoupper($url['scheme']);
@@ -261,9 +261,9 @@ abstract class Amazon_FPS_CBUIPipeline {
      * Constructs the query string for the parameters added to this class
      *
      * This function also calculates the signature of the all the name value pairs
-     * added to the class. 
+     * added to the class.
      *
-     * @return string  URL 
+     * @return string  URL
      */
     public function getURL() {
         $this->validateCommonMandatoryParameters($this->parameters);
