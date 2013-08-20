@@ -103,39 +103,41 @@ class Amazon_FPS_SignatureUtilsForOutbound {
 
        return $verified;
     }
-private function httpsRequest($url){
+    
+    private function httpsRequest($url){
         // Compose the cURL request
         $curlHandle = curl_init();
-           curl_setopt($curlHandle, CURLOPT_URL, $url);
-           curl_setopt($curlHandle, CURLOPT_FILETIME, false);
-           curl_setopt($curlHandle, CURLOPT_FRESH_CONNECT, true);
-           curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, true);
-           curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, '2');
-           curl_setopt($curlHandle, CURLOPT_CAINFO, '../../ca-bundle.crt');
-           curl_setopt($curlHandle, CURLOPT_CAPATH, '../../ca-bundle.crt');
-           curl_setopt($curlHandle, CURLOPT_FOLLOWLOCATION, false);
-           curl_setopt($curlHandle, CURLOPT_MAXREDIRS, 0);
-           curl_setopt($curlHandle, CURLOPT_HEADER, true);
-           curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-           curl_setopt($curlHandle, CURLOPT_NOSIGNAL, true);
-       curl_setopt($curlHandle, CURLOPT_USERAGENT, self::USER_AGENT_IDENTIFIER);
+        curl_setopt($curlHandle, CURLOPT_URL, $url);
+        curl_setopt($curlHandle, CURLOPT_FILETIME, false);
+        curl_setopt($curlHandle, CURLOPT_FRESH_CONNECT, true);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, '2');
+        curl_setopt($curlHandle, CURLOPT_CAINFO, '../../ca-bundle.crt');
+        curl_setopt($curlHandle, CURLOPT_CAPATH, '../../ca-bundle.crt');
+        curl_setopt($curlHandle, CURLOPT_FOLLOWLOCATION, false);
+        curl_setopt($curlHandle, CURLOPT_MAXREDIRS, 0);
+        curl_setopt($curlHandle, CURLOPT_HEADER, true);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curlHandle, CURLOPT_NOSIGNAL, true);
+        curl_setopt($curlHandle, CURLOPT_USERAGENT, self::USER_AGENT_IDENTIFIER);
+
         // Handle the encoding if we can.
-          if (extension_loaded('zlib')){
-              curl_setopt($curlHandle, CURLOPT_ENCODING, '');
-          }
-       
-           // Execute the request
-          $response = curl_exec($curlHandle);
-           
+        if (extension_loaded('zlib')){
+            curl_setopt($curlHandle, CURLOPT_ENCODING, '');
+        }
+
+        // Execute the request
+        $response = curl_exec($curlHandle);
+
         // Grab only the body
-          $headerSize = curl_getinfo($curlHandle, CURLINFO_HEADER_SIZE);
-          $responseBody = substr($response, $headerSize);
-       
-           // Close the cURL connection
-          curl_close($curlHandle);
-       
-           // Return the public key
-          return $responseBody;
+        $headerSize = curl_getinfo($curlHandle, CURLINFO_HEADER_SIZE);
+        $responseBody = substr($response, $headerSize);
+
+        // Close the cURL connection
+        curl_close($curlHandle);
+
+        // Return the public key
+        return $responseBody;
     }
 
     /**
@@ -177,9 +179,6 @@ private function httpsRequest($url){
         }
         return $data;
     }
-
-    
-    
     
     private static function getSignatureAlgorithm($signatureMethod) {
         if ("RSA-SHA1" == $signatureMethod) {
@@ -187,6 +186,4 @@ private function httpsRequest($url){
         }
         return null;
     }
-
 }
-?>
