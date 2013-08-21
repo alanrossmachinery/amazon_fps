@@ -2,7 +2,7 @@
     "name": "alanrossmachinery/amazon_fps",
     "description": "A fork of the Amazon FPS PHP LIbrary with some bug fixes and enchancements",
     "version": "2.1",
-    "license": "Apache",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Aaron Heimlich",
