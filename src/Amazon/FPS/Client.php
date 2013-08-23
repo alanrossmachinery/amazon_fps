@@ -817,7 +817,7 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
     {
         $ex = null;
         if (!is_null($responseBody) && strpos($responseBody, '<') === 0) {
-            if (preg_match('@<RequestId>(.*)</RequestId>.*<Error><Code>(.*)</Code><Message>(.*)</Message></Error>.*(<Error>)?@mi',
+            if (preg_match('@<RequestId>(.*)</RequestId>.*<Error><Code>(.*)</Code><Message>(.*)</Message></Error>.*(<Error>)?@mis',
                 $responseBody, $errorMatcherOne)) {
 
                 $requestId = $errorMatcherOne[1];
@@ -828,7 +828,7 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
                 $ex = new Amazon_FPS_Exception(array ('Message' => $message, 'StatusCode' => $status, 'ErrorCode' => $code,
                                                            'ErrorType' => 'Unknown', 'RequestId' => $requestId, 'XML' => $responseBody));
 
-            } elseif (preg_match('@<Error><Code>(.*)</Code><Message>(.*)</Message></Error>.*(<Error>)?.*<RequestID>(.*)</RequestID>@mi',
+            } elseif (preg_match('@<Error><Code>(.*)</Code><Message>(.*)</Message></Error>.*(<Error>)?.*<RequestID>(.*)</RequestID>@mis',
                 $responseBody, $errorMatcherTwo)) {
 
                 $code = $errorMatcherTwo[1];
@@ -837,7 +837,7 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
                 require_once ('Amazon/FPS/Exception.php');
                 $ex = new Amazon_FPS_Exception(array ('Message' => $message, 'StatusCode' => $status, 'ErrorCode' => $code,
                                                               'ErrorType' => 'Unknown', 'RequestId' => $requestId, 'XML' => $responseBody));
-            } elseif (preg_match('@<Error><Type>(.*)</Type><Code>(.*)</Code><Message>(.*)</Message>.*</Error>.*(<Error>)?.*<RequestId>(.*)</RequestId>@mi',
+            } elseif (preg_match('@<Error><Type>(.*)</Type><Code>(.*)</Code><Message>(.*)</Message>.*</Error>.*(<Error>)?.*<RequestId>(.*)</RequestId>@mis',
                 $responseBody, $errorMatcherThree)) {
 
                 $type = $errorMatcherThree[1];
@@ -850,11 +850,13 @@ class Amazon_FPS_Client implements Amazon_FPS_Interface
 
             } else {
                 require_once ('Amazon/FPS/Exception.php');
-                $ex = new Amazon_FPS_Exception(array('Message' => 'Internal Error', 'StatusCode' => $status));
+                $ex = new Amazon_FPS_Exception(array('Message' => 'Internal Error', 'StatusCode' => $status, 'ErrorCode' => '',
+                                                              'ErrorType' => 'Unknown', 'RequestId' => '', 'XML' => $responseBody));
             }
         } else {
             require_once ('Amazon/FPS/Exception.php');
-            $ex = new Amazon_FPS_Exception(array('Message' => 'Internal Error', 'StatusCode' => $status));
+            $ex = new Amazon_FPS_Exception(array('Message' => 'Internal Error', 'StatusCode' => $status, 'ErrorCode' => '',
+                                                          'ErrorType' => 'Unknown', 'RequestId' => '', 'XML' => $responseBody));
         }
         return $ex;
     }
